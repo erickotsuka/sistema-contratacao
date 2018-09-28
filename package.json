@@ -1,18 +1,19 @@
 {
-  "name": "sistema-contratacao",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5",
-    "semantic-ui-css": "^2.4.0",
-    "semantic-ui-react": "^0.82.5"
-  },
+  "name": "gatsby-starter-hello-world",
+  "description": "Gatsby hello world starter",
+  "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
+  },
+  "dependencies": {
+    "gatsby": "^2.0.0",
+    "gatsby-plugin-typography": "^2.2.0",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-typography": "^0.16.13",
+    "typography": "^0.16.17",
+    "typography-theme-fairy-gates": "^0.15.11"
   }
 }
