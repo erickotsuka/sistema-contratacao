@@ -27,7 +27,7 @@ export default () => (
 
           <Form.Field label="Tipo de serviço"/>
           <Dropdown
-              
+          
               placeholder="Selecione um serviço"
               fluid
               selection
