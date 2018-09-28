@@ -1,88 +1,60 @@
 import React from 'react'
 import Layout from '../components/layout'
-import '../css/main.css'
-import '../css/util.css'
+import TwoSteps from '../components/step'
+import { Container, Divider } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
 
-const PublishDemandPage = () => (
+export default () => (
   <Layout>
-    <div className="container-contact100">
-      <div className="wrap-contact100">
-        <form className="contact100-form validate-form">
-          <span className="contact100-form-title">Nova Demanda</span>
-
-          <div
-            className="wrap-input100 validate-input"
-            data-validate="Name is required"
-          >
-            <span className="label-input100">Título</span>
-            <input
-              className="input100"
-              type="text"
-              name="name"
-              placeholder="Idenfique da melhor forma a sua demanda"
-            />
-            <span className="focus-input100" />
-          </div>
-
-          <div className="wrap-input100 input100-select">
-            <span className="label-input100">Tipo de demanda</span>
-            <div>
-              <select className="selection-2" name="service">
-                <option>Escolher</option>
-                <option>Online Store</option>
-                <option>eCommerce Bussiness</option>
-                <option>UI/UX Design</option>
-                <option>Online Services</option>
-              </select>
-            </div>
-            <span className="focus-input100" />
-          </div>
-
-          <div
-            className="wrap-input100 validate-input"
-            data-validate="Message is required"
-          >
-            <span className="label-input100">Descrição</span>
-            <textarea
-              className="input100"
-              name="message"
-              placeholder="Descreva as necessidades da sua demanda"
-            />
-            <span className="focus-input100" />
-          </div>
-
-          <div
-            className="wrap-input100 validate-input"
-            data-validate="Name is required"
-          >
-            <span className="label-input100">Prazo limite (opcional)</span>
-            <input
-              className="input100"
-              type="text"
-              name="name"
-              placeholder="Data máxima para ter o trabalho entregue"
-            />
-            <span className="focus-input100" />
-          </div>
-
-          <div className="container-contact100-form-btn">
-            <div className="wrap-contact100-form-btn">
-              <div className="contact100-form-bgbtn" />
-              <button className="contact100-form-btn">
-                <span>
-                  Enviar
-                  <i
-                    className="fa fa-long-arrow-right m-l-7"
-                    aria-hidden="true"
-                  />
-                </span>
-              </button>
-            </div>
-          </div>
-        </form>
+    <Container textAlign="center">
+      <div>
+        <h1>Nova Demanda</h1>
       </div>
-    </div>
+
+      <TwoSteps />
+    </Container>
+    <Container>
+      <div>
+        <Form>
+          <Form.Field
+            className
+            id="form-input-control-title"
+            control={Input}
+            label="Título"
+            placeholder="Escreva um título que melhor identifique sua demanda"
+          />
+
+          <Form.Field label="Tipo de serviço"/>
+          <Dropdown
+              
+              placeholder="Selecione um serviço"
+              fluid
+              selection
+              options={[
+                {
+                  text: 'Arquitetônico',
+                  text: 'Análise de Negócio',
+                  text: 'Programação',
+                  text: 'Tradutor',
+                },
+              ]}
+            />
+
+          <Form.Field
+            id="form-textarea-control-description"
+            control={TextArea}
+            label="Descrição"
+            placeholder="Descreva sua demanda aqui"
+          />
+          <Form.Field
+            id="form-button-control-public"
+            control={Button}
+            content="Enviar"
+            label=""
+          />
+        </Form>
+      </div>
+    </Container>
   </Layout>
 )
-
-export default PublishDemandPage
