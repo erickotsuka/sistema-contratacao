@@ -5,20 +5,6 @@ import '../css/util.css';
 
 export default () => (
   <Layout>
-    {/*<h1> Nova Demanda</h1>
-    <p>Solicite um novo serviço que esteja precisando!</p>
-
-    <div> 
-      <form>
-        <label> Name: <input type="text" name="tittle" /></label>
-        <label> Tipo de serviço: <input type="text" name="service_type" /></label>
-        {/*<input type="submit" value="Submit" />}
-      </form>
-
-    </div>*/}
-
-    <body>
-
     <div className="container-contact100">
       <div className="wrap-contact100">
         <form className="contact100-form validate-form">
@@ -32,7 +18,7 @@ export default () => (
             <span className="focus-input100"></span>
           </div>
 
-        
+
           <div className="wrap-input100 input100-select">
             <span className="label-input100">Tipo de demanda</span>
             <div>
@@ -52,7 +38,7 @@ export default () => (
             <textarea className="input100" name="message" placeholder="Descreva as necessidades da sua demanda"></textarea>
             <span className="focus-input100"></span>
           </div>
-    
+
           <div className="wrap-input100 validate-input" data-validate="Name is required">
             <span className="label-input100">Prazo limite (opcional)</span>
             <input className="input100" type="text" name="name" placeholder="Data máxima para ter o trabalho entregue"/>
@@ -71,12 +57,11 @@ export default () => (
             </div>
           </div>
 
-          
+
         </form>
       </div>
     </div>
-    </body>
 
   </Layout>
-  
+
 );
