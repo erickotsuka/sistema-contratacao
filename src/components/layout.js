@@ -1,25 +1,70 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import { StaticQuery, graphql } from 'gatsby'
+import { Container, Grid, Menu } from 'semantic-ui-react'
 
-const ListLink = props => (
-  <li style={{ display: `inline-block`, marginRight: `1rem` }}>
-    <Link to={props.to}>{props.children}</Link>
-  </li>
-);
+import Header from './header'
 
-export default ({ children }) => (
-  <div style={{ margin: `0 auto`, padding: `1.25rem 1rem` }}>
-    <header style={{ marginBottom: `1.5rem` }}>
-      <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-        <h3 style={{ display: `inline` }}>SistemaContrata</h3>
-      </Link>
-      <ul style={{ listStyle: `none`, float: `right` }}>
-        <ListLink to="/">Home</ListLink>
-        <ListLink to="/publish-demand/">Publicar Demanda</ListLink>
-        <ListLink to="/submit-proposal/">Submeter Proposta</ListLink>
-        <ListLink to="/analyse-proposal/">Analisar proposta</ListLink>
-      </ul>
-    </header>
+import 'semantic-ui-less/semantic.less'
+import { Link } from 'gatsby'
+
+const LinkedItem = ({ children, ...props }) => (
+  <Menu.Item as={Link} activeClassName="active" {...props}>
     {children}
-  </div>
-);
+  </Menu.Item>
+)
+
+const Layout = ({ children, data }) => (
+  <StaticQuery
+    query={graphql`
+      query SiteTitleQuery {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `}
+    render={data => (
+      <>
+        <Helmet
+          title={data.site.siteMetadata.title}
+          meta={[
+            { name: 'description', content: 'Sample' },
+            { name: 'keywords', content: 'sample, something' },
+          ]}
+        />
+
+        <Header siteTitle={data.site.siteMetadata.title} />
+
+        <Container>
+          <Grid relaxed stackable>
+            <Grid.Column mobile={16} tablet={4} computer={4}>
+              <Menu vertical fluid>
+                <LinkedItem to="/">
+                  Home
+                </LinkedItem>
+                <LinkedItem to="/publish-demand">Publicar demanda</LinkedItem>
+                <LinkedItem to="/submit-proposal">Submeter proposta</LinkedItem>
+                <LinkedItem to="/analyse-proposal">
+                  Analisar proposta
+                </LinkedItem>
+              </Menu>
+            </Grid.Column>
+
+            <Grid.Column mobile={16} tablet={8} computer={8}>
+              {children}
+            </Grid.Column>
+          </Grid>
+        </Container>
+      </>
+    )}
+  />
+)
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+}
+
+export default Layout
