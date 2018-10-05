@@ -12,7 +12,7 @@ class DateTimeFormInline extends React.Component {
          this.setState({ [name]: value });
        }
      }
-    
+
      render() {
        return (
          <Form>
@@ -25,6 +25,4 @@ class DateTimeFormInline extends React.Component {
        );
      }
    }
-
-const DateTimeFormInline;
 export default DateTimeFormInline
