@@ -62,7 +62,9 @@ export default () => (
           </div>
           
 
-               
+          <div style={{ paddingBottom: 40 , paddingTop: 40}}>
+            <DateTimeFormInline />
+          </div>
 
 
           <Container textAlign="right">
