@@ -6,7 +6,14 @@ import {
   } from 'semantic-ui-calendar-react';
 
 
-class DateTimeFormInline extends React.Component {
+class DateTimeForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        date: '',
+      };
+    }
+  
     handleChange = (event, {name, value}) => {
        if (this.state.hasOwnProperty(name)) {
          this.setState({ [name]: value });
@@ -17,14 +24,14 @@ class DateTimeFormInline extends React.Component {
        return (
          <Form>
            <DateInput
-             inline
-             name="date"
-             value={this.state.date}
-             onChange={this.handleDateChange} />
+          name="date"
+          placeholder="Date"
+          value={this.state.date}
+          iconPosition="left"
+          onChange={this.handleChange} />
          </Form>
        );
      }
    }
 
-const DateTimeFormInline;
-export default DateTimeFormInline
+export default DateTimeForm;
