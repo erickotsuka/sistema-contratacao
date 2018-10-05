@@ -1,8 +1,8 @@
 import React from 'react'
 import Layout from '../components/layout'
 import TwoSteps from '../components/step'
-import DateTimeFormInline from '../components/date_input'
-import { Container, Divider } from 'semantic-ui-react'
+import DateTimeForm from '../components/date_input'
+import { Container} from 'semantic-ui-react'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 import { Dropdown } from 'semantic-ui-react'
 import {
@@ -25,7 +25,7 @@ export default () => (
     </Container>
     <Container>
       <div>
-        <Form>
+          <Form>
           <div style={{ paddingBottom: 20 }}>
             <Form.Field 
               style={{ paddingBottom: 10 }}
@@ -53,7 +53,7 @@ export default () => (
           </div>
                 
           <div style={{ paddingBottom: 20 }}>
-            <Form.Field style={{ paddingBottom: 0 }}
+            <Form.Field style={{ paddingBottom: 70 }}
               id="form-textarea-control-description"
               control={TextArea}
               label="Descrição"
@@ -63,7 +63,7 @@ export default () => (
           
 
           <div style={{ paddingBottom: 40 , paddingTop: 40}}>
-            <DateTimeFormInline />
+            <DateTimeForm date='' />
           </div>
 
 
@@ -75,7 +75,7 @@ export default () => (
               label=""
             />
           </Container>
-        </Form>
+          </Form>
       </div>
     </Container>
   </Layout>
