@@ -6,25 +6,27 @@ import { Container, Form, Input, TextArea, Button, Dropdown } from 'semantic-ui-
 
 class PublishDemandPage extends Component {
   state = { showDemand: false }
-  submitPage = () => this.setState({showDemand: true})
   formPage = () => this.setState({showDemand: false})
+  submitPage = () => this.setState({showDemand: true})
+  
 
   render() {
-    const { showDemand } = this.state;
+    {/*const { showDemand } = this.state;*/}
 
     return (
-      <Layout>
+    <Layout>
         <Container textAlign="center">
           <div style={{ paddingTop: 50}}>
             <h1>Nova Demanda</h1>
           </div>
 
           <div style={{ paddingBottom: 40 , paddingTop: 40}}>
-            <TwoSteps />
+            <TwoSteps props={this.state}></TwoSteps>
           </div>
-          
         </Container>
-        <Container>
+
+        {  
+          this.state.showDemand == false?
           <div>
             <Form>
               <div style={{ paddingBottom: 20 }}>
@@ -51,7 +53,7 @@ class PublishDemandPage extends Component {
                     ]}
                   />
               </div>
-                    
+                      
               <div style={{ paddingBottom: 20 }}>
                 <Form.Field style={{ paddingBottom: 70, paddingTop: 10}}
                   id="form-textarea-control-description"
@@ -60,46 +62,57 @@ class PublishDemandPage extends Component {
                   placeholder="Descreva sua demanda aqui"
                 />
               </div>
-              
-
+                
               <div style={{ paddingBottom: 20 , paddingTop: 0}}>
                 <DateTimeForm />
               </div>
-
-              <div style={{ paddingBottom: 80 , paddingTop: 0}}>
-                <Button 
-                  id="publish-demand-form-button-control-next"
-                  disabled={!this.state.showDemand}
-                  positive 
-                  content='Próximo' 
-                  icon='right arrow' 
-                  labelPosition='right' 
-                  floated='right'
-                  onClick={this.submitPage}/>
-                  
-                <Button 
-                  id="publish-demand-form-button-control-back"
-                  disabled={this.state.showDemand}
-                  content='Voltar' 
-                  icon='left arrow' 
-                  labelPosition='left' 
-                  floated='left'
-                  onClick={this.formPage}/>
-                <Button 
-                  id="publish-demand-form-button-control-submit"
-                  disabled={this.state.showDemand}
-                  positive 
-                  content='Confirmar demanda' 
-                  icon='check' 
-                  labelPosition='right' 
-                  floated='right'
-                  //onClick={}
-                  />
-              </div>
             </Form>
           </div>
-        </Container>
-      </Layout>
+              
+          :null
+        }
+        <div style={{ paddingBottom: 80 , paddingTop: 0}}>
+          
+          {
+            this.state.showDemand == false?
+            <Button 
+              id="publish-demand-form-button-control-next"
+              /*disabled={estado de campos obrigatorios form preenchidos}*/
+              positive 
+              content='Próximo' 
+              icon='right arrow' 
+              labelPosition='right' 
+              floated='right'
+              onClick={this.submitPage}/>
+            :null
+          }
+
+          {
+            this.state.showDemand == true?
+            <div>
+              <Button 
+                id="publish-demand-form-button-control-back"
+                isHidden={this.state.showDemand}
+                content='Voltar' 
+                icon='left arrow' 
+                labelPosition='left' 
+                floated='left'
+                onClick={this.formPage}/>
+          
+              <Button 
+                id="publish-demand-form-button-control-submit"
+                positive 
+                content='Confirmar demanda' 
+                icon='check' 
+                labelPosition='right' 
+                floated='right'
+                //onClick={}
+                />
+              </div>
+            :null
+          }
+        </div>
+    </Layout>
     )
   }
 }
