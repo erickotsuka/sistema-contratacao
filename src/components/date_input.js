@@ -1,9 +1,7 @@
 import React from 'react'
-import { Form } from 'semantic-ui-react'
 import {
-    DateInput,
-    DatesRangeInput
-  } from 'semantic-ui-calendar-react';
+  DateInput
+} from 'semantic-ui-calendar-react'
 
 
 class DateTimeForm extends React.Component {
@@ -22,14 +20,13 @@ class DateTimeForm extends React.Component {
     
      render() {
        return (
-         <Form>
-           <DateInput
-          name="date"
-          placeholder="Date"
-          value={this.state.date}
-          iconPosition="left"
-          onChange={this.handleChange} />
-         </Form>
+          <DateInput
+            label="Data limite esperada (opcional)"
+            name="date"
+            placeholder="DD-MM-YYYY"
+            value={this.state.date}
+            iconPosition="left"
+            onChange={this.handleChange} />
        );
      }
    }
