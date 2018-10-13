@@ -2,11 +2,11 @@ import React, {Component} from 'react'
 import Layout from '../components/layout'
 import TwoSteps from '../components/step'
 import DateTimeForm from '../components/date_input'
-import { Container, Divider, Segment, Form, Input, TextArea, Button, Dropdown } from 'semantic-ui-react'
+import { Container, Form, Input, TextArea, Button, Dropdown } from 'semantic-ui-react'
 
 class PublishDemandPage extends Component {
   state = { showDemand: false }
-  submitPage = () => this.setState({ showDemand: true })
+  submitPage = () => this.setState({showDemand: true})
   formPage = () => this.setState({showDemand: false})
 
   render() {
@@ -66,15 +66,36 @@ class PublishDemandPage extends Component {
                 <DateTimeForm />
               </div>
 
-              <Container textAlign="right">
-                <Form.Field 
+              <div style={{ paddingBottom: 80 , paddingTop: 0}}>
+                <Button 
                   id="publish-demand-form-button-control-next"
-                  control={Button}
-                  content="Próximo"
-                  label=""
-                />
-              </Container>
-              
+                  disabled={!this.state.showDemand}
+                  positive 
+                  content='Próximo' 
+                  icon='right arrow' 
+                  labelPosition='right' 
+                  floated='right'
+                  onClick={this.submitPage}/>
+                  
+                <Button 
+                  id="publish-demand-form-button-control-back"
+                  disabled={this.state.showDemand}
+                  content='Voltar' 
+                  icon='left arrow' 
+                  labelPosition='left' 
+                  floated='left'
+                  onClick={this.formPage}/>
+                <Button 
+                  id="publish-demand-form-button-control-submit"
+                  disabled={this.state.showDemand}
+                  positive 
+                  content='Confirmar demanda' 
+                  icon='check' 
+                  labelPosition='right' 
+                  floated='right'
+                  //onClick={}
+                  />
+              </div>
             </Form>
           </div>
         </Container>
