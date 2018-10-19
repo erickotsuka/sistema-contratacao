@@ -8,14 +8,154 @@ import {
   Label,
   TextArea,
   Modal,
+  Card,
   Grid,
   Image,
 } from 'semantic-ui-react'
 import { DatesRangeInput } from 'semantic-ui-calendar-react'
-import PersonCard from '../components/person-card'
 
 class SubmitProposalPage extends Component {
-  state = { modalOpen: false, datesRange: '' }
+  state = {
+    modalOpen: false,
+    datesRange: '',
+    selectedTalents: [],
+    talentsList: [
+      {
+        id: 0,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 1,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 2,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 3,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 4,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 5,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 6,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 7,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 8,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 9,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 10,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+      {
+        id: 11,
+        photo: "http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png",
+        name: "Fulano de Tal",
+        job: "Tester",
+        description: "Fulano de Tal é legal",
+      },
+    ],
+  }
+
+  handleCardClick = (event, { image, header, meta }) => {
+    this.state.selectedTalents.push(
+      {
+        'photo': image,
+        'name': header,
+        'job': meta,
+      })
+
+    this.close()
+  }
+
+  createCardsList = () => {
+    let list = []
+
+    for (let i = 0; i < this.state.talentsList.length; i++) {
+      list.push(
+        <Card
+          image={this.state.talentsList[i].photo}
+          header={this.state.talentsList[i].name}
+          meta={this.state.talentsList[i].job}
+          description={this.state.talentsList[i].description}
+          href='#'
+          onClick={this.handleCardClick}
+        />
+      )
+    }
+
+    return list
+  }
+
+  showSelectedTalents = () => {
+
+    let list = []
+
+    for (let i = 0; i < this.state.selectedTalents.length; i++) {
+      list.push(
+        <Card>
+          <Image src={this.state.selectedTalents[i].photo} fluid circular centered />
+          <Card.Content>
+            <Card.Header>{this.state.selectedTalents[i].name}</Card.Header>
+            <Card.Meta>{this.state.selectedTalents[i].job}</Card.Meta>
+          </Card.Content>
+        </Card>
+      )
+    }
+
+    return list
+  }
+
   show = () => this.setState({ modalOpen: true })
   close = () => this.setState({ modalOpen: false })
 
@@ -58,8 +198,11 @@ class SubmitProposalPage extends Component {
                   <Label>.00</Label>
                 </Input>
               </Form.Field>
-              <div style={{ paddingBottom: 5 }}>
+              <div style={{ paddingBottom: 20 }}>
                 <h3>Equipe</h3>
+                <Card.Group itemsPerRow={4}>
+                  {this.showSelectedTalents()}
+                </Card.Group>
               </div>
               <Form.Field>
                 <Button
@@ -85,66 +228,9 @@ class SubmitProposalPage extends Component {
         <Modal open={modalOpen} onClose={this.close}>
           <Modal.Header>Escolha um membro para a equipe</Modal.Header>
           <Modal.Content>
-            <Grid columns={3}>
-              <Grid.Row>
-                <Grid.Column>
-                  <PersonCard
-                    image="http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png"
-                    name="Fulano de Tal"
-                    job="Tester"
-                    description="Fulano de Tal é legal."
-                    link="#"
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <PersonCard
-                    image="http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png"
-                    name="Fulano de Tal"
-                    job="Tester"
-                    description="Fulano de Tal é legal."
-                    link="#"
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <PersonCard
-                    image="http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png"
-                    name="Fulano de Tal"
-                    job="Tester"
-                    description="Fulano de Tal é legal."
-                    link="#"
-                  />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column>
-                  <PersonCard
-                    image="http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png"
-                    name="Fulano de Tal"
-                    job="Tester"
-                    description="Fulano de Tal é legal."
-                    link="#"
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <PersonCard
-                    image="http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png"
-                    name="Fulano de Tal"
-                    job="Tester"
-                    description="Fulano de Tal é legal."
-                    link="#"
-                  />
-                </Grid.Column>
-                <Grid.Column>
-                  <PersonCard
-                    image="http://www.pluspixel.com.br/wp-content/uploads/avatar-1.png"
-                    name="Fulano de Tal"
-                    job="Tester"
-                    description="Fulano de Tal é legal."
-                    link="#"
-                  />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
+            <Card.Group itemsPerRow={4}>
+              {this.createCardsList()}
+            </Card.Group>
           </Modal.Content>
         </Modal>
       </Layout>
