@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Layout from '../components/layout';
-import { Router, Route, withRouter } from 'react-router';
-
 import {
   Container,
   Button,
