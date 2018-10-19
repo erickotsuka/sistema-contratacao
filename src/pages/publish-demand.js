@@ -21,13 +21,13 @@ export default () => (
       <div style={{ paddingBottom: 40 , paddingTop: 40}}>
         <TwoSteps />
       </div>
-      
+
     </Container>
     <Container>
       <div>
           <Form>
           <div style={{ paddingBottom: 20 }}>
-            <Form.Field 
+            <Form.Field
               style={{ paddingBottom: 10 }}
               className
               id="form-input-control-title"
@@ -51,7 +51,7 @@ export default () => (
                 ]}
               />
           </div>
-                
+
           <div style={{ paddingBottom: 20 }}>
             <Form.Field style={{ paddingBottom: 70 }}
               id="form-textarea-control-description"
@@ -60,7 +60,7 @@ export default () => (
               placeholder="Descreva sua demanda aqui"
             />
           </div>
-          
+
 
           <div style={{ paddingBottom: 40 , paddingTop: 40}}>
             <DateTimeForm date='' />
@@ -68,7 +68,7 @@ export default () => (
 
 
           <Container textAlign="right">
-            <Form.Field 
+            <Form.Field
               id="form-button-control-public"
               control={Button}
               content="Enviar"

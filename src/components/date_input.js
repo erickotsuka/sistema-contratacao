@@ -19,7 +19,7 @@ class DateTimeForm extends React.Component {
          this.setState({ [name]: value });
        }
      }
-    
+
      render() {
        return (
          <Form>
@@ -33,5 +33,4 @@ class DateTimeForm extends React.Component {
        );
      }
    }
-
 export default DateTimeForm;
