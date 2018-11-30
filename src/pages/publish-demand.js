@@ -68,7 +68,6 @@ class PublishDemandPage extends Component {
             </Form>
           :null
         }
-        {/*<div style={{ paddingBottom: 80 , paddingTop: 0}}>*/}
           
         {
           this.state.showDemand === false?
@@ -108,7 +107,6 @@ class PublishDemandPage extends Component {
             </div>
           :null
         }
-      {/*</div>*/}
       </Container>
     </Layout>
   )
