@@ -21,6 +21,9 @@ class IndexPage extends Component{
           </Grid>
       </Layout>
       <div style={{ background: '#444444' }}>
+            <Image src='https://www.ringtonez.app/amp/ensof/home5.png' fluid centered/>
+          </div>
+      <div style={{ background: '#444444' }}>
         <Container textAlign='left'>
           <Image src='https://www.ringtonez.app/amp/ensof/pr.png' size='large' centered/>
         </Container>
