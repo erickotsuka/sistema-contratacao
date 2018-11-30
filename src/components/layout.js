@@ -40,7 +40,7 @@ const Layout = ({ children, data }) => (
        <Header siteTitle={"TOKO"} />
        
         <Container fluid>
-          <Container fluid style={{padding: "0px 0px"}}>
+          <Container fluid style={{padding: "1px 0px"}}>
             <Grid fluid stackable>
               <Grid.Row mobile={4} tablet={4} computer={4}>
                 <Menu horizontal fluid style={{padding: "0px 15px"}}>
@@ -53,7 +53,9 @@ const Layout = ({ children, data }) => (
                     Analisar proposta
                   </LinkedItem>
                 </Menu>
+                {children}
               </Grid.Row>
+            
             </Grid>
           </Container>
     
