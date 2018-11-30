@@ -31,13 +31,13 @@ const Layout = ({ children, data }) => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: 'description', content: 'working contract platform' },
+            { name: 'keywords', content: 'contract, find workers, do project' },
           ]}
         />
 
        {/* <Header siteTitle={data.site.siteMetadata.title} />*/}
-       <Header siteTitle={"TOKO"}/>
+       <Header siteTitle={"TOKO"} />
 
         <Container>
           <Grid relaxed stackable>
