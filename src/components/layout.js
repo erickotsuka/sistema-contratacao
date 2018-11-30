@@ -40,8 +40,8 @@ const Layout = ({ children, data }) => (
 
         <Container>
           <Grid relaxed stackable>
-            <Grid.Column mobile={16} tablet={4} computer={4}>
-              <Menu vertical fluid>
+            <Grid.Row mobile={16} tablet={4} computer={4}>
+              <Menu horizontal fluid>
                 <LinkedItem to="/">
                   Home
                 </LinkedItem>
@@ -51,11 +51,11 @@ const Layout = ({ children, data }) => (
                   Analisar proposta
                 </LinkedItem>
               </Menu>
-            </Grid.Column>
+            </Grid.Row>
 
-            <Grid.Column mobile={16} tablet={8} computer={8}>
+            <Grid.Row mobile={16} tablet={4} computer={4}>
               {children}
-            </Grid.Column>
+            </Grid.Row>
           </Grid>
         </Container>
       </>
