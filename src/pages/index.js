@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
-import { Container, Image} from 'semantic-ui-react'
+import { Grid, Container, Image} from 'semantic-ui-react'
 import Layout from '../components/layout'
 //import {Image, Container} from 'semantic-ui-react'
 
 class IndexPage extends Component{
   render() {
     return(
-    
+    /*Site name on: src/components/layout->header*/
+
     <Layout>
-        <Container textAlign="center">
-          
-          <Container textAlign='right'>
-            <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' circular/>
-          </Container>
-        </Container>
+      <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column textAlign='left'>
+              <p> Que tal contratar pessoas para realizarem serviços para você?</p>
+            </Grid.Column>
+            <Grid.Column textAlign='left'>
+              <Image src='https://www.ringtonez.app/amp/ensof/pr.png' size='massive'/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
     </Layout>
     )
   }

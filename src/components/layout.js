@@ -36,7 +36,8 @@ const Layout = ({ children, data }) => (
           ]}
         />
 
-        <Header siteTitle={data.site.siteMetadata.title} />
+       {/* <Header siteTitle={data.site.siteMetadata.title} />*/}
+       <Header siteTitle={"TOKO"}/>
 
         <Container>
           <Grid relaxed stackable>
