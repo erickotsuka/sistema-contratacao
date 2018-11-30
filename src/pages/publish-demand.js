@@ -11,8 +11,7 @@ class PublishDemandPage extends Component {
   
 
   render() {
-    {/*const { showDemand } = this.state;*/}
-
+    /*{const { showDemand } = this.state;}*/
     return (
     <Layout>
         <Container textAlign="center">
@@ -24,10 +23,10 @@ class PublishDemandPage extends Component {
             <TwoSteps props={this.state}></TwoSteps>
           </div>
         </Container>
-
+        <Container>
         {  
-          this.state.showDemand == false?
-          <div>
+          this.state.showDemand === false?
+          
             <Form>
               <div style={{ paddingBottom: 20 }}>
                 <Form.Field 
@@ -67,53 +66,52 @@ class PublishDemandPage extends Component {
                 <DateTimeForm />
               </div>
             </Form>
-          </div>
-              
           :null
         }
-        <div style={{ paddingBottom: 80 , paddingTop: 0}}>
+        {/*<div style={{ paddingBottom: 80 , paddingTop: 0}}>*/}
           
-          {
-            this.state.showDemand == false?
+        {
+          this.state.showDemand === false?
+          <Button 
+            id="publish-demand-form-button-control-next"
+            /*disabled={estado de campos obrigatorios form preenchidos}*/
+            positive 
+            content='Próximo' 
+            icon='right arrow' 
+            labelPosition='right' 
+            floated='right'
+            onClick={this.submitPage}/>
+          :null
+        }
+
+        {
+          this.state.showDemand === true?
+          <div>
             <Button 
-              id="publish-demand-form-button-control-next"
-              /*disabled={estado de campos obrigatorios form preenchidos}*/
+              id="publish-demand-form-button-control-back"
+              isHidden={this.state.showDemand}
+              content='Voltar' 
+              icon='left arrow' 
+              labelPosition='left' 
+              floated='left'
+              onClick={this.formPage}/>
+        
+            <Button 
+              id="publish-demand-form-button-control-submit"
               positive 
-              content='Próximo' 
-              icon='right arrow' 
+              content='Confirmar demanda' 
+              icon='check' 
               labelPosition='right' 
               floated='right'
-              onClick={this.submitPage}/>
-            :null
-          }
-
-          {
-            this.state.showDemand == true?
-            <div>
-              <Button 
-                id="publish-demand-form-button-control-back"
-                isHidden={this.state.showDemand}
-                content='Voltar' 
-                icon='left arrow' 
-                labelPosition='left' 
-                floated='left'
-                onClick={this.formPage}/>
-          
-              <Button 
-                id="publish-demand-form-button-control-submit"
-                positive 
-                content='Confirmar demanda' 
-                icon='check' 
-                labelPosition='right' 
-                floated='right'
-                //onClick={}
-                />
-              </div>
-            :null
-          }
-        </div>
+              //onClick={}
+              />
+            </div>
+          :null
+        }
+      {/*</div>*/}
+      </Container>
     </Layout>
-    )
+  )
   }
 }
 
