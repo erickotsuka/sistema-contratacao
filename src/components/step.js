@@ -7,34 +7,32 @@ class TwoSteps extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      next: 'true',
-    };
+    this.state = {mode: 'fillDemand'};
   }
 
-  formPage = () => this.setState({next: false});
-  submitPage = () => this.setState({next: true});
+  step = false;
+  //formPage = () => this.setState({next: false});
+  //submitPage = () => this.setState({next: true});
+
+ 
 
   render(){
-    //{
-    //this.state.next == false?
-    //this.formPage()
-    //:this.submitPage()
-    //}
+
+    const fillDemand = this.state.mode === 'fillDemand';
 
     return(
-      
+
       <Step.Group items={[
         {
           key: 'Demanda',
           icon: 'file alternate outline',
-          disabled: this.state.next, 
+          disabled: !fillDemand, 
           title: 'Cadastro da demanda',
           // description: 'Preencher',
         },
         { 
           key: 'confirm', 
-          disabled: !this.state.next, 
+          disabled: fillDemand, 
           icon: 'check', 
           title: 'Confirmar pedido' },
       ]} />
