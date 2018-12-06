@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { Image, Container, Grid } from 'semantic-ui-react'
+import { Image, Grid } from 'semantic-ui-react'
 
 const Header = ({ siteTitle }) => (
   <div style={{ background: '#FC8755' }}>

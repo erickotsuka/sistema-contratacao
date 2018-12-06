@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import { Image, Container, Grid, Menu } from 'semantic-ui-react'
+import { Container, Grid, Menu } from 'semantic-ui-react'
 
 import Header from './header'
 
@@ -44,14 +44,10 @@ const Layout = ({ children, data }) => (
             <Grid fluid stackable>
               <Grid.Row mobile={4} tablet={4} computer={4}>
                 <Menu horizontal fluid style={{padding: "0px 15px"}}>
-                  <LinkedItem to="/">
-                    Home
-                  </LinkedItem>
+                  <LinkedItem to="/">Home</LinkedItem>
                   <LinkedItem to="/publish-demand" >Publicar demanda</LinkedItem>
                   <LinkedItem to="/submit-proposal">Submeter proposta</LinkedItem>
-                  <LinkedItem to="/analyse-proposal">
-                    Analisar proposta
-                  </LinkedItem>
+                  <LinkedItem to="/analyse-proposal">Analisar proposta</LinkedItem>
                 </Menu>
                 {children}
               </Grid.Row>

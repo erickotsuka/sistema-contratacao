@@ -9,7 +9,6 @@ import {
   TextArea,
   Modal,
   Card,
-  Grid,
   Image,
 } from 'semantic-ui-react'
 import { DatesRangeInput } from 'semantic-ui-calendar-react'
