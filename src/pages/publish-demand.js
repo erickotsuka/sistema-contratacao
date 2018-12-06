@@ -19,15 +19,17 @@ class PublishDemandPage extends Component {
             <h1>Nova Demanda</h1>
           </div>
 
-          <div style={{ paddingBottom: 40 , paddingTop: 40}}>
-            <TwoSteps props={this.state}></TwoSteps>
-          </div>
+          
         </Container>
         <Container>
         {  
-          this.state.showDemand === false?
-          
+          this.state.showDemand === false? 
             <Form>
+              <Container textAlign='center'>
+                <div style={{ paddingBottom: 40 , paddingTop: 40}}>
+                  <TwoSteps showDemand={this.state.showDemand} ></TwoSteps>
+                </div>
+              </Container>
               <div style={{ paddingBottom: 20 }}>
                 <Form.Field 
                   style={{ paddingBottom: 10 }}
@@ -86,6 +88,11 @@ class PublishDemandPage extends Component {
         {
           this.state.showDemand === true?
           <div>
+            <Container textAlign='center'>
+                <div style={{ paddingBottom: 40 , paddingTop: 40}}>
+                  <TwoSteps showDemand={this.state.showDemand} ></TwoSteps>
+                </div>
+            </Container>
             <Button 
               id="publish-demand-form-button-control-back"
               isHidden={this.state.showDemand}

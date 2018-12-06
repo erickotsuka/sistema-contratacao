@@ -11,10 +11,8 @@ class TwoSteps extends React.Component {
   }
 
   step = false;
-  //formPage = () => this.setState({next: false});
-  //submitPage = () => this.setState({next: true});
-
- 
+  //fillForm = () => this.setState({mode: 'fillDemand'});
+  //viewForm = () => this.setState({mode: 'viewDemand'});
 
   render(){
 
@@ -26,13 +24,15 @@ class TwoSteps extends React.Component {
         {
           key: 'Demanda',
           icon: 'file alternate outline',
-          disabled: !fillDemand, 
+          //disabled: !fillDemand, 
+          disabled: this.props.showDemand, 
           title: 'Cadastro da demanda',
           // description: 'Preencher',
         },
         { 
           key: 'confirm', 
-          disabled: fillDemand, 
+          //disabled: !fillDemand, 
+          disabled: !this.props.showDemand,
           icon: 'check', 
           title: 'Confirmar pedido' },
       ]} />
