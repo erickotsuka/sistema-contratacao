@@ -52,62 +52,64 @@ class AnalyseProposalPage extends Component {
     return (
       <div>
         {
-          this.state.screen === 'show-proposal' ?
-            <Layout>
-              {
-                <Container textAlign='justified'>
-                  <div>
-                    <Header as='h1'>{servico.nome}</Header>
-                    <Message textAlign='' >{servico.descricao}</Message>
-                  </div>
-                  <Divider section></Divider>
-                  <div>
-                    <Header as='h2'>Entregas</Header>
-                    <List relaxed>
-                      {
-                        servico.entregas.map(function (descricaoEntrega, index) {
-                          return (
-                            <List.Item>
-                              <List.Content>Entrega nº {index + 1} : {descricaoEntrega}</List.Content>
-                            </List.Item>
-                          );
-                        })}
-                    </List>
-                  </div>
-                  <Divider section></Divider>
-                  <div>
-                    <Header as='h2'>Prazo</Header>
-                    <p>Início: {servico.prazo.inicio.toLocaleDateString()} Fim: {servico.prazo.fim.toLocaleDateString()}</p>
-                  </div>
-                  <Divider section></Divider>
-                  <div>
-                    <Header as='h2'>Equipe</Header>
-                    <List>
-                      {
-                        servico.equipe.map(function (integrante) {
-                          return (
-                            <List.Item>
-                              <Image avatar src={integrante.avatar} />
-                              <List.Content>
-                                <List.Header as='a'>{integrante.nome}</List.Header>
-                                <List.Content>{integrante.funcao}</List.Content>
-                              </List.Content>
-                            </List.Item>
-                          );
-                        })
-                      }
-                    </List>
-                  </div>
-                  <br />
-                  <br />
-                  <div>
-                    <Button floated='left' onClick={this.changePage('refuse-proposal')}>Não aceitar</Button>
-                    <Button positive floated='right' onClick={this.changePage('accept-proposal')}>Aceitar e Contratar</Button>
-                  </div>
-                </Container>
-              }
-            </Layout>
-          : this.state.screen === 'accept-proposal' ?
+        this.state.screen === 'show-proposal'?
+          <Layout>
+            <Container textAlign='justified'>
+              <div>
+                {/*<Header as='h1'>{servico.nome}</Header>*/}
+                <Message textAlign='' >{servico.descricao}</Message>
+              </div>
+              <Divider section></Divider>
+              <div>
+                {/*<Header as='h2'>Entregas</Header>*/}
+                <List relaxed>
+                  {
+                    servico.entregas.map(function (descricaoEntrega, index) {
+                      return (
+                        <List.Item>
+                          <List.Content>Entrega nº {index + 1} : {descricaoEntrega}</List.Content>
+                        </List.Item>
+                      );
+                    })}
+                </List>
+              </div>
+              <Divider section></Divider>
+              <div>
+                <Header as='h2'>Prazo</Header>
+                <p>Início: {servico.prazo.inicio.toLocaleDateString()} Fim: {servico.prazo.fim.toLocaleDateString()}</p>
+              </div>
+              <Divider section></Divider>
+              <div>
+                <Header as='h2'>Equipe</Header>
+                <List>
+                  {
+                    servico.equipe.map(function (integrante) {
+                      return (
+                        <List.Item>
+                          <Image avatar src={integrante.avatar} />
+                          <List.Content>
+                            <List.Header as='a'>{integrante.nome}</List.Header>
+                            <List.Content>{integrante.funcao}</List.Content>
+                          </List.Content>
+                        </List.Item>
+                      );
+                    })
+                  }
+                </List>
+              </div>
+              <br />
+              <br />
+              <div>
+                <Button floated='left' onClick={this.changePage('refuse-proposal')}>Não aceitar</Button>
+                <Button positive floated='right' onClick={this.changePage('accept-proposal')}>Aceitar e Contratar</Button>
+              </div>
+            </Container>
+            
+          </Layout>
+          : null
+          }
+          {
+            this.state.screen === 'accept-proposal'?
             <Layout>
               {
                 <Container textAlign='justified'>
@@ -118,7 +120,7 @@ class AnalyseProposalPage extends Component {
                 </Container>
               }
             </Layout>
-          : this.state.screen === 'refuse-proposal' ?
+          : this.state.screen === 'refuse-proposal'?
             <Layout>
               {
                 <Container textAlign='justified'>
@@ -129,8 +131,10 @@ class AnalyseProposalPage extends Component {
                 </Container>
               }
             </Layout>
-            : // não sei o que aconteceu pra chegar aqui
-            <Layout>
+            :null
+            
+        }
+        <Layout>
               {
                 <Container textAlign='justified'>
                   <div>
@@ -140,7 +144,6 @@ class AnalyseProposalPage extends Component {
                 </Container>
               }
             </Layout>
-        }
       </div>
     )
   }
