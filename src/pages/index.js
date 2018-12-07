@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'gatsby'
 import { Grid, Container, Button, Image} from 'semantic-ui-react'
 import Layout from '../components/layout'
+import ButtonExampleCircularSocial from '../components/social_media'
 
 
 class IndexPage extends Component{
@@ -42,7 +43,8 @@ class IndexPage extends Component{
       </Container>
 
       <Container textAlign='right' fluid style={{ background: '#333333', padding: '30px 50px'}}>
-        <p textAlign='right' style={{color: 'white'}}>Copyright © 2018 by Tokosono</p>
+        <p floated='left' textAlign='right' style={{color: 'white'}}>Copyright © 2018 by Tokosono</p>
+        <ButtonExampleCircularSocial floated='left'/>  
       </Container>
     </div>
     )
