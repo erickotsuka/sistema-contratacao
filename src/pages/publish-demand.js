@@ -29,7 +29,7 @@ class PublishDemandPage extends Component {
   }
 
   saveDemandToDatabase() {
-    url = 'http://127.0.0.1:5000/demanda';
+    var url = 'http://127.0.0.1:5000/demanda';
 
     console.log(this.state.limit_date)
 
