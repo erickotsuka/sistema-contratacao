@@ -236,15 +236,15 @@ class SubmitProposalPage extends Component {
                   control={TextArea}
                   placeholder="Escreva a descrição detalhada da proposta."
                 />
-                <Button 
-                  positive 
-                  floated="right" 
+                <Button
+                  positive
+                  floated="right"
                   type="submit"
                   onClick={this.successPage}>
                   Submeter
                 </Button>
               </Form>
-              
+
 
               <Modal open={modalOpen} onClose={this.close}>
               <Modal.Header>Escolha um membro para a equipe</Modal.Header>
@@ -255,7 +255,7 @@ class SubmitProposalPage extends Component {
               </Modal.Content>
               </Modal>
             </Container>
-            
+
             :null
           }
 
@@ -269,14 +269,14 @@ class SubmitProposalPage extends Component {
                 <h2>:)</h2>
               </Container>
               <Link style={{ color: 'white'}} to="/">
-                <Button 
+                <Button
                   id="publish-demand-form-button-control-submit"
-                  content='Retornar ao inicio' 
+                  content='Retornar ao inicio'
                   icon='home'
                   color='orange'
-                  labelPosition='right' 
+                  labelPosition='right'
                   floated='right'/>
-                <ButtonExampleCircularSocial floated='left'/>  
+                <ButtonExampleCircularSocial floated='left'/>
               </Link>
             </Container>
             :null

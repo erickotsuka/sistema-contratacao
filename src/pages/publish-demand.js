@@ -7,7 +7,7 @@ import ButtonExampleCircularSocial from '../components/social_media'
 import { Link } from 'gatsby'
 
 class PublishDemandPage extends Component {
-  
+
   constructor (props) {
     super(props)
     this.state = {
@@ -19,20 +19,44 @@ class PublishDemandPage extends Component {
       limit_date: 'Indefinida'
     }
   }
-  
+
   formPage = () => this.setState({showDemand: false, mode: 'fillForm'})
   submitPage = () => this.setState({showDemand: true, mode: 'showDemand'})
   successPage= () => this.setState({mode: 'submissionSuccess'})
-  
+
   handleChange (event) {
     this.setState({[event.target.name]: event.target.value})
+  }
+
+  saveDemandToDatabase() {
+    url = 'http://127.0.0.1:5000/demanda';
+
+    console.log(this.state.limit_date)
+
+    var demand = {
+      id_cliente: 1,
+      titulo: this.state.title,
+      tipo_servico: this.state.service_type,
+      data_limite: this.state.limit_date,
+      descricao: this.state.description,
+    };
+
+    fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(demand),
+      headers:{
+        'Content-Type': 'application/json',
+      }
+    }).then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
   }
 
   render() {
     /*{const { showDemand } = this.state;}*/
     return (
     <Layout>
-       { 
+       {
         this.state.mode === 'fillForm' | this.state.mode === 'showDemand'?
         <Container textAlign="center">
           <div style={{ paddingTop: 50}}>
@@ -43,7 +67,7 @@ class PublishDemandPage extends Component {
         }
 
         <Container>
-        { 
+        {
           this.state.mode === 'fillForm'?
             <Form>
               <Container textAlign='center'>
@@ -52,7 +76,7 @@ class PublishDemandPage extends Component {
                 </div>
               </Container>
               <div style={{ paddingBottom: 10 }}>
-                <Form.Field 
+                <Form.Field
                   style={{ paddingBottom: 10 }}
                   name='title'
                   id="form-input-control-title"
@@ -81,7 +105,7 @@ class PublishDemandPage extends Component {
                     ]}
                   />
               </div>
-                      
+
               <div style={{ paddingBottom: 10 }}>
                 <Form.Field style={{ paddingBottom: 70, paddingTop: 10}}
                   id="form-textarea-control-description"
@@ -93,9 +117,9 @@ class PublishDemandPage extends Component {
                   required
                 />
               </div>
-                
+
               <div style={{ paddingBottom: 30 , paddingTop: 0}}>
-                <DateTimeForm 
+                <DateTimeForm
                   label="Data limite (opcional)"
                   name='limit_date'
                   placeholder={this.state.limit_date}
@@ -103,19 +127,19 @@ class PublishDemandPage extends Component {
                   required
                 />
               </div>
-              <Button 
+              <Button
                 id="publish-demand-form-button-control-next"
                 /*disabled={estado de campos obrigatorios form preenchidos}*/
-                positive 
-                content='Próximo' 
-                icon='right arrow' 
-                labelPosition='right' 
+                positive
+                content='Próximo'
+                icon='right arrow'
+                labelPosition='right'
                 floated='right'
                 onClick={this.submitPage}/>
             </Form>
           :null
         }
-          
+
         {
           this.state.mode === 'showDemand'?
           <div>
@@ -125,9 +149,9 @@ class PublishDemandPage extends Component {
                 </div>
             </Container>
 
-          
+
             <Form>
-                <Form.Field 
+                <Form.Field
                   style={{ paddingBottom: 10 }}
                   id="form-input-control-title-read-only"
                   control={Input}
@@ -135,7 +159,7 @@ class PublishDemandPage extends Component {
                   placeholder={this.state.title}
                   readOnly
                 />
-                <Form.Field 
+                <Form.Field
                   style={{ paddingBottom: 10 }}
                   id="form-input-control-service-read-only"
                   control={Input}
@@ -143,7 +167,7 @@ class PublishDemandPage extends Component {
                   placeholder={this.state.service_type}
                   readOnly
                 />
-                <Form.Field 
+                <Form.Field
                   style={{ paddingBottom: 10 }}
                   id="form-input-control-service-read-only"
                   control={TextArea}
@@ -151,7 +175,7 @@ class PublishDemandPage extends Component {
                   placeholder={this.state.description}
                   readOnly
                 />
-                <Form.Field 
+                <Form.Field
                   style={{ paddingBottom: 10 }}
                   id="form-input-control-service-read-only"
                   control={Input}
@@ -160,22 +184,22 @@ class PublishDemandPage extends Component {
                   readOnly
                 />
             </Form>
-            
-            <Button 
+
+            <Button
               id="publish-demand-form-button-control-back"
               isHidden={this.state.showDemand}
-              content='Editar' 
-              icon='left arrow' 
-              labelPosition='left' 
+              content='Editar'
+              icon='left arrow'
+              labelPosition='left'
               floated='left'
               onClick={this.formPage}/>
-        
-            <Button 
+
+            <Button
               id="publish-demand-form-button-control-submit"
-              positive 
-              content='Confirmar demanda' 
-              icon='check' 
-              labelPosition='right' 
+              positive
+              content='Confirmar demanda'
+              icon='check'
+              labelPosition='right'
               floated='right'
               onClick={this.successPage}/>
             </div>
@@ -191,14 +215,14 @@ class PublishDemandPage extends Component {
               <h2>:)</h2>
             </Container>
             <Link style={{ color: 'white'}} to="/">
-              <Button 
+              <Button
                 id="publish-demand-form-button-control-submit"
-                content='Retornar ao inicio' 
+                content='Retornar ao inicio'
                 icon='home'
                 color='orange'
-                labelPosition='right' 
+                labelPosition='right'
                 floated='right'/>
-              <ButtonExampleCircularSocial floated='left'/>  
+              <ButtonExampleCircularSocial floated='left'/>
             </Link>
           </div>
           :null
