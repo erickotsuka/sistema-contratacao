@@ -11,7 +11,7 @@ class DateTimeForm extends React.Component {
         date: '',
       };
     }
-  
+    
     handleChange = (event, {name, value}) => {
        if (this.state.hasOwnProperty(name)) {
          this.setState({ [name]: value });
@@ -21,12 +21,13 @@ class DateTimeForm extends React.Component {
      render() {
        return (
           <DateInput
-            label="Data limite esperada (opcional)"
+            label={this.props.label}
             name="date"
             placeholder="DD-MM-YYYY"
             value={this.state.date}
             iconPosition="left"
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            required={this.props.required} />
        );
      }
    }
