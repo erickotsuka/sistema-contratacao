@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import Layout from '../components/layout'
 import TwoSteps from '../components/step'
-import ButtonExampleCircularSocial from '../components/social_media'
 import DateTimeForm from '../components/date_input'
 import { Container, Form, Input, TextArea, Button, Dropdown } from 'semantic-ui-react'
+import ButtonExampleCircularSocial from '../components/social_media'
 import { Link } from 'gatsby'
 
 class PublishDemandPage extends Component {
@@ -32,13 +32,16 @@ class PublishDemandPage extends Component {
     /*{const { showDemand } = this.state;}*/
     return (
     <Layout>
+       { 
+        this.state.mode === 'fillForm' | this.state.mode === 'showDemand'?
         <Container textAlign="center">
           <div style={{ paddingTop: 50}}>
             <h1>Nova Demanda</h1>
           </div>
-
-          
         </Container>
+        :null
+        }
+
         <Container>
         { 
           this.state.mode === 'fillForm'?
@@ -181,10 +184,10 @@ class PublishDemandPage extends Component {
          {
           this.state.mode === 'submissionSuccess'?
           <div>
-            <Container textAlign='center' style={{ paddingBottom: 150 , paddingTop: 150}}>
-              <h1 style={{color: 'orange'}}>Sua demanda foi submetida com</h1>
+            <Container textAlign='center' style={{ paddingBottom: 200 , paddingTop: 200}}>
+              <h1 style={{color: 'orange'}}>Sua demanda foi publicada com</h1>
               <h1 style={{color: 'orange'}}>SUCESSO!</h1>
-              <h2>Aguarde que em breve um profissional irá entrar em contato com você</h2>
+              <h3>Aguarde que em breve um profissional irá entrar em contato com você</h3>
               <h2>:)</h2>
             </Container>
             <Link style={{ color: 'white'}} to="/">
@@ -194,8 +197,7 @@ class PublishDemandPage extends Component {
                 icon='home'
                 color='orange'
                 labelPosition='right' 
-                floated='right'
-                onClick={this.successPage}/>
+                floated='right'/>
               <ButtonExampleCircularSocial floated='left'/>  
             </Link>
           </div>
