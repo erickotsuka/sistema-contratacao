@@ -5,14 +5,6 @@ import { Step } from 'semantic-ui-react'
 
 class TwoSteps extends React.Component {
   
-  //constructor(props) {
-  //  super(props);
-    //this.state = {mode: 'fillDemand'};
-  //}
-
-  //fillForm = () => this.setState({mode: 'fillDemand'});
-  //viewForm = () => this.setState({mode: 'viewDemand'});
-
   render(){
 
     return(
