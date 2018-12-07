@@ -27,11 +27,11 @@ class IndexPage extends Component{
               <Container style={{ padding: '10px 10px'}} textAlign='left'>São mais de 10.000 profissionais capacitados para trabalhar já!</Container>
 
               <Container textAlign='center' style={{ color: 'white', padding: '40px 10px'}}>
-                <Link style={{ color: 'white'}} to="/publish-demand">{
+                <Link style={{ color: 'white'}} to="/publish-demand">
                     <Button color='orange' size='large'>
                       <div style={{ color: 'white' }}>Começar agora</div>
                     </Button>
-                  }</Link>
+                  </Link>
               </Container>
             </h1>
           </Grid.Column>
