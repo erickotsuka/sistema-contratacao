@@ -26,7 +26,7 @@
   ],
   "license": "ISC",
   "scripts": {
-    "start": "gatsby serve -- port 80",
+    "start": "gatsby serve -- port 8000",
     "heroku-postbuild": "gatsby build",
     "build": "gatsby build",
     "develop": "gatsby develop",
