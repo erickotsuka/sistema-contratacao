@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import Layout from '../components/layout'
 import TwoSteps from '../components/step'
-import DateTimeForm from '../components/date_input'
 import { Container, Form, Input, TextArea, Button, Dropdown } from 'semantic-ui-react'
 import ButtonExampleCircularSocial from '../components/social_media'
 import { Link } from 'gatsby'
+import {DateInput} from 'semantic-ui-calendar-react'
 
 class PublishDemandPage extends Component {
 
@@ -60,6 +60,12 @@ class PublishDemandPage extends Component {
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error:', error));
+  }
+
+  handleChangeDate = (event, {name, value}) => {
+    if (this.state.hasOwnProperty(name)) {
+      this.setState({ [name]: value });
+    }
   }
 
   render() {
@@ -128,12 +134,14 @@ class PublishDemandPage extends Component {
               </div>
 
               <div style={{ paddingBottom: 30 , paddingTop: 0}}>
-                <DateTimeForm
-                  label="Data limite (opcional)"
-                  name='limit_date'
-                  placeholder={this.state.limit_date}
-                  onChange={event => this.handleChange(event)}
-                />
+                <DateInput
+                  label={this.props.label}
+                  name="limit_date"
+                  placeholder="DD-MM-YYYY"
+                  value={this.state.limit_date}
+                  iconPosition="left"
+                  onChange={this.handleChangeDate} 
+                  />
               </div>
               <Button
                 id="publish-demand-form-button-control-next"
