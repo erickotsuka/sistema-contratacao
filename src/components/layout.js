@@ -34,11 +34,13 @@ const Layout = ({ children, data }) => (
             { name: 'description', content: 'working contract platform' },
             { name: 'keywords', content: 'contract, find workers, do project' },
           ]}
-        />
+        >
+          <link rel="icon" type="image/png" href="https://www.ringtonez.app/amp/ensof/favicon.ico" sizes="16x16" />
+        </Helmet>
 
        {/* <Header siteTitle={data.site.siteMetadata.title} />*/}
        <Header siteTitle={"TOKO"} />
-       
+
         <Container fluid>
           <Container fluid style={{padding: "1px 0px"}}>
             <Grid fluid stackable>
@@ -51,12 +53,12 @@ const Layout = ({ children, data }) => (
                 </Menu>
                 {children}
               </Grid.Row>
-            
+
             </Grid>
           </Container>
-    
+
         </Container>
-        
+
       </>
     )}
   />
