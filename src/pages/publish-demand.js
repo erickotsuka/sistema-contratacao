@@ -22,10 +22,20 @@ class PublishDemandPage extends Component {
 
   formPage = () => this.setState({showDemand: false, mode: 'fillForm'})
   submitPage = () => this.setState({showDemand: true, mode: 'showDemand'})
-  successPage= () => this.setState({mode: 'submissionSuccess'})
+  successPage = () => this.setState({mode: 'submissionSuccess'})
 
   handleChange (event) {
+    console.log(event.target.name + ': ' + event.target.value)
     this.setState({[event.target.name]: event.target.value})
+  }
+
+  handleDropdownChange(event) {
+    this.setState({service_type: event.target.textContent})
+  }
+
+  handleConfirm() {
+    this.saveDemandToDatabase();
+    this.successPage();
   }
 
   saveDemandToDatabase() {
@@ -53,7 +63,6 @@ class PublishDemandPage extends Component {
   }
 
   render() {
-    /*{const { showDemand } = this.state;}*/
     return (
     <Layout>
        {
@@ -95,8 +104,8 @@ class PublishDemandPage extends Component {
                     placeholder={this.state.service_type}
                     fluid
                     selection
-                    name='service'
-                    onChange={event => this.handleChange(event)}
+                    name='service_type'
+                    onChange={event => this.handleDropdownChange(event)}
                     options={[
                       { text: 'Arquitetônico', value: 'Arquitetônico'},
                       { text: 'Análise de Negócio', value: 'Análise de Negócio'},
@@ -124,7 +133,6 @@ class PublishDemandPage extends Component {
                   name='limit_date'
                   placeholder={this.state.limit_date}
                   onChange={event => this.handleChange(event)}
-                  required
                 />
               </div>
               <Button
@@ -201,7 +209,7 @@ class PublishDemandPage extends Component {
               icon='check'
               labelPosition='right'
               floated='right'
-              onClick={this.successPage}/>
+              onClick={this.handleConfirm}/>
             </div>
           :null
         }
