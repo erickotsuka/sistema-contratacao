@@ -18,30 +18,16 @@ class PublishDemandPage extends Component {
       description: 'Descreva aqui sua demanda',
       limit_date: 'Indefinida'
     }
+    this.saveDemandToDatabase = this.saveDemandToDatabase.bind(this)
   }
 
   formPage = () => this.setState({showDemand: false, mode: 'fillForm'})
   submitPage = () => this.setState({showDemand: true, mode: 'showDemand'})
   successPage = () => this.setState({mode: 'submissionSuccess'})
-
-  handleChange (event) {
-    console.log(event.target.name + ': ' + event.target.value)
-    this.setState({[event.target.name]: event.target.value})
-  }
-
-  handleDropdownChange(event) {
-    this.setState({service_type: event.target.textContent})
-  }
-
-  handleConfirm() {
-    this.saveDemandToDatabase();
-    this.successPage();
-  }
-
   saveDemandToDatabase() {
     var url = 'http://127.0.0.1:5000/demanda';
 
-    console.log(this.state.limit_date)
+    console.log("Save demand to database")
 
     var demand = {
       id_cliente: 1,
@@ -51,7 +37,10 @@ class PublishDemandPage extends Component {
       descricao: this.state.description,
     };
 
-    if (demand.data_limite == 'Indefinida') demand.data_limite = null;
+    if (demand.data_limite === 'Indefinida')
+      demand.data_limite = null;
+
+    console.log(demand)
 
     fetch(url, {
       method: 'PUT',
@@ -62,6 +51,17 @@ class PublishDemandPage extends Component {
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
     .catch(error => console.error('Error:', error));
+
+    this.setState({mode: 'submissionSuccess'})
+  }
+
+  handleChange (event) {
+    console.log(event.target.name + ': ' + event.target.value)
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  handleDropdownChange(event) {
+    this.setState({service_type: event.target.textContent})
   }
 
   handleChangeDate = (event, {name, value}) => {
@@ -142,7 +142,7 @@ class PublishDemandPage extends Component {
                   placeholder="DD-MM-YYYY"
                   value={this.state.limit_date}
                   iconPosition="left"
-                  onChange={this.handleChangeDate} 
+                  onChange={this.handleChangeDate}
                   />
               </div>
               <Button
@@ -219,7 +219,7 @@ class PublishDemandPage extends Component {
               icon='check'
               labelPosition='right'
               floated='right'
-              onClick={this.handleConfirm}/>
+              onClick={this.saveDemandToDatabase}/>
             </div>
           :null
         }
