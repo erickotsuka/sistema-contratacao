@@ -51,6 +51,8 @@ class PublishDemandPage extends Component {
       descricao: this.state.description,
     };
 
+    if (demand.data_limite == 'Indefinida') demand.data_limite = null;
+
     fetch(url, {
       method: 'PUT',
       body: JSON.stringify(demand),
